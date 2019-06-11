@@ -23,6 +23,6 @@
 hs_err_pid*
 
 # Compile Folder
-/target/
-/.classpath
-/.project
+tuna-api/target/
+tuna-api/.classpath
+tuna-api/.project
