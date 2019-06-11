@@ -1,0 +1,141 @@
+// Overrides CoreUI & Bootstrap Variables
+
+//
+// Color system
+//
+
+$white:                           #fff;
+$gray-100:                        #f0f2f7;
+$gray-200:                        #e4e6eb;
+$gray-300:                        #c7cbd5;
+$gray-400:                        #869fac;
+$gray-500:                        #678898;
+$gray-600:                        #9da0a8;
+$gray-700:                        #3e515b;
+$gray-800:                        #383e4b;
+$gray-900:                        #151b1e;
+$black:                           #000;
+
+$blue:                            #36a9e1;
+$indigo:                          #6610f2;
+$purple:                          #6f42c1;
+$pink:                            #e83e8c;
+$red:                             #ff5454;
+$orange:                          #fabb3d;
+$yellow:                          #ffc107;
+$green:                           #bdea74;
+$teal:                            #20c997;
+$cyan:                            #67c2ef;
+
+// Import default variables
+@import "node_modules/@coreui/coreui-pro/scss/variables";
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-transitions:              true;
+$enable-rounded:                  true;
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg:                         #f5f5f5;
+$body-color:                      $gray-800;
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-size-base:                  0.875rem;
+$text-muted:                      $gray-600;
+
+// Breadcrumbs
+
+$breadcrumb-padding-x:            2rem;
+$breadcrumb-bg:                   transparent;
+$breadcrumb-margin-bottom:        0;
+$breadcrumb-divider-color:        $gray-600;
+$breadcrumb-active-color:         $gray-600;
+
+// Cards
+
+$card-border-color:               $gray-200;
+$card-cap-bg:                     $gray-100;
+
+// Dropdowns
+
+$dropdown-padding-y:              0;
+$dropdown-border-color:           $gray-200;
+$dropdown-divider-bg:             $gray-100;
+
+// Buttons
+
+$btn-secondary-border:            $gray-300;
+
+// Progress bars
+
+$progress-bg:                     $gray-100;
+
+// Tables
+
+$table-bg-accent:                 $gray-100;
+$table-bg-hover:                  $gray-100;
+
+// Forms
+
+$input-group-addon-bg:            $gray-100;
+$input-border-color:              $gray-200;
+$input-group-addon-border-color:  $gray-200;
+
+// CoreUI overrides
+
+$border-color:                        $gray-200;
+
+// Navbar
+
+$navbar-height:                       50px;
+$navbar-bg:                           theme-color("primary");
+$navbar-border:                       0;
+$navbar-brand-width:                  220px;
+$navbar-brand-bg:                     darken(theme-color("primary"),10%);
+$navbar-brand-logo-size:              90px auto;
+$navbar-brand-border:                 0;
+
+$navbar-brand-minimized-bg:           $navbar-brand-bg;
+$navbar-brand-minimized-border:       $navbar-brand-border;
+
+$navbar-color:                        #fff;
+$navbar-hover-color:                  darken($navbar-color, 10%);
+$navbar-active-color:                 darken($navbar-color, 20%);
+$navbar-disabled-color:               lighter($navbar-color, 20%);
+
+$navbar-toggler-icon:                 str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-color}' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23");
+$navbar-toggler-icon-hover:           str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-hover-color}' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23");
+
+// Sidebar
+$sidebar-bg:                          $gray-800;
+$sidebar-width:                       220px;
+$mobile-sidebar-width:                220px;
+
+// Sidebar Navigation
+
+$sidebar-nav-title-padding-y:         .95rem;
+$sidebar-nav-title-color:             $text-muted;
+
+$sidebar-nav-link-hover-bg:           darken($sidebar-bg, 10%);
+
+$sidebar-nav-link-active-bg:          darken($sidebar-bg, 10%);
+$sidebar-nav-link-active-icon-color:  theme-color("primary");
+
+$sidebar-nav-dropdown-bg:             darken($sidebar-bg, 5%);
+
+// Breadcrumb
+
+$breadcrumb-borders:                  0;
+
+// Footer
+
+$footer-bg:                           $gray-800;
+$footer-color:                        #fff;

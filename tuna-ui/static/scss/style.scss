@@ -1,0 +1,74 @@
+// Custom variables
+@import "variables";
+
+// Import styles with default layout.
+@import "node_modules/@coreui/coreui-pro/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+
+.modal-hg {
+    max-width: 1024px;
+}
+
+.is-valid > .vue-treeselect__control {
+  border-color: #bdea74
+}
+
+.is-invalid > .vue-treeselect__control {
+  border-color: #ff5454
+}
+
+.theme-primary .vdatetime-popup__header,
+.theme-primary .vdatetime-calendar__month__day--selected > span > span,
+.theme-primary .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: #36a9e1;
+}
+
+.theme-primary .vdatetime-year-picker__item--selected,
+.theme-primary .vdatetime-time-picker__item--selected,
+.theme-primary .vdatetime-popup__actions__button {
+  color: #36a9e1;
+}
+
+.nav-dropdown-items {
+  background: #2c3b41;
+}
+
+.card-header {
+  // background-color: #1e8fc6;
+  // color: white
+}
+//
+.sidebar .nav-dropdown > .nav-dropdown-items .nav-link {
+  padding-left: 2rem;
+}
+//
+.fa-number-1:before {
+    font-weight: bold;
+    content: "1";
+}
+.fa-number-2:before {
+    font-weight: bold;
+    content: "2";
+}
+.fa-number-3:before {
+    font-weight: bold;
+    content: "3";
+}
+.fa-number-4:before {
+    font-weight: bold;
+    content: "4";
+}
+.fa-number-5:before {
+    font-weight: bold;
+    content: "5";
+}
+.fa-number-6:before {
+    font-weight: bold;
+    content: "6";
+}
+.fa-number-7:before {
+    font-weight: bold;
+    content: "7";
+}
