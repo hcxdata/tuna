@@ -12,7 +12,7 @@ module.exports = {
     proxyTable: {
       // proxy all requests starting with /api to jsonplaceholder
       '/api': {
-        target: 'http://60.205.222.27:18081',
+        target: 'http://127.0.0.1:8080',
         // target: 'http://192.168.6.12:8080',
         changeOrigin: true
       }

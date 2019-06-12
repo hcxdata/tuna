@@ -58,6 +58,28 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
+    path: '/customer',
+    component: Layout,
+    name: '客户管理',
+    redirect: 'customer/customerInfo',
+    alwaysShow: true, // will always show the root menu
+    meta: {
+      icon: 'icon-settings',
+      roles: ['ROLE_ADMIN'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'customerInfo',
+        component: () => import('@/views/customer/customerInfo'),
+        name: "客户信息",
+        meta: {
+          icon: 'fa fa-address-book-o',
+          roles: ['ROLE_ADMIN'] // or you can only set roles in sub nav
+        }
+      }
+    ]
+  },
+  {
     path: '/system',
     component: Layout,
     name: generateTitle('system'),
@@ -98,9 +120,36 @@ export const asyncRouterMap = [
         }
       },
       {
-        path: 'dep',
-        component: () => import('@/views/sys/department'),
-        name: generateTitle('sys_dep'),
+        path: 'department',
+        component: () => import('@/views/department'),
+        name: "部门管理",
+        meta: {
+          icon: 'fa fa-address-book-o',
+          roles: ['ROLE_ADMIN'] // or you can only set roles in sub nav
+        }
+      },
+      {
+        path: 'salesAreaDict',
+        component: () => import('@/views/sys/salesAreaDict'),
+        name: "销售区域",
+        meta: {
+          icon: 'fa fa-address-book-o',
+          roles: ['ROLE_ADMIN'] // or you can only set roles in sub nav
+        }
+      },
+      {
+        path: 'proviceDict',
+        component: () => import('@/views/sys/proviceDict'),
+        name: "省属字典",
+        meta: {
+          icon: 'fa fa-address-book-o',
+          roles: ['ROLE_ADMIN'] // or you can only set roles in sub nav
+        }
+      },
+      {
+        path: 'cityDict',
+        component: () => import('@/views/sys/cityDict'),
+        name: "地市字典",
         meta: {
           icon: 'fa fa-address-book-o',
           roles: ['ROLE_ADMIN'] // or you can only set roles in sub nav

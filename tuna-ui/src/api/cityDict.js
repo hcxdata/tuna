@@ -2,16 +2,23 @@ import request from '@/utils/request'
 
 export function query(params, data = {}) {
   return request({
-    url: '/api/Departments/query',
+    url: '/api/CityDict/query',
     method: 'post',
     params: params,
     data: data
   })
 }
 
+export function queryAll() {
+  return request({
+    url: '/api/CityDict/queryAll',
+    method: 'get'
+  })
+}
+
 export function create(data) {
   return request({
-    url: '/api/Departments',
+    url: '/api/CityDict',
     method: 'post',
     data
   })
@@ -19,14 +26,14 @@ export function create(data) {
 
 export function fetch(id) {
   return request({
-    url: '/api/Departments/' + id,
+    url: '/api/CityDict/' + id,
     method: 'get'
   })
 }
 
 export function update(data) {
   return request({
-    url: '/api/Departments/' + data.id,
+    url: '/api/CityDict/' + data.id,
     method: 'put',
     data
   })
@@ -34,7 +41,7 @@ export function update(data) {
 
 export function del(id) {
   return request({
-    url: '/api/Departments/' + id,
+    url: '/api/CityDict/' + id,
     method: 'delete'
   })
 }
