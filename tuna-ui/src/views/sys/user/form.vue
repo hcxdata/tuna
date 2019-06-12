@@ -231,7 +231,7 @@ import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
 
 import { createSysUser, fetchSysUser, updateSysUser } from '@/api/users'
 
-import { fetchList } from '@/api/departments'
+import { query } from '@/api/departments'
 import { list2tree, tree2Options } from '@/utils'
 
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
@@ -336,7 +336,7 @@ export default {
   },
   methods: {
     getList() {
-      fetchList().then(response => {
+      query().then(response => {
         this.treeData = list2tree(response.data, { pid: 'parentId', insertParentAttrs: ['showName'] })
       }).catch(function(err) {
         console.log(err)

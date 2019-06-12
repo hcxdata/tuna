@@ -8,14 +8,14 @@
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-navbar-nav class="d-md-down-none">
-        <b-nav-item class="px-3" :to="'/task_center/dashboard'">
-          <i class="fa fa-desktop" title="我的工作台" id="desktop"></i>
+        <b-nav-item :to="'/task_center/dashboard'" class="px-3">
+          <i id="desktop" class="fa fa-desktop" title="我的工作台"/>
         </b-nav-item>
-        <b-nav-item class="px-3" :to="'/tasks/create'">
-          <i class="fa fa-pencil-square-o" title="创建试验任务" id="pencil-square-o"></i>
+        <b-nav-item :to="'/tasks/create'" class="px-3">
+          <i id="pencil-square-o" class="fa fa-pencil-square-o" title="创建试验任务"/>
         </b-nav-item>
-        <b-nav-item class="px-3" :to="'/devices/dashboard'">
-          <i class="fa fa-sliders" title="设备监控" id="sliders"></i>
+        <b-nav-item :to="'/devices/dashboard'" class="px-3">
+          <i id="sliders" class="fa fa-sliders" title="设备监控"/>
         </b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
@@ -39,14 +39,14 @@
         <SidebarForm>
           <DefaultSidebarForm/>
         </SidebarForm>
-        <SidebarNav :navItems="nav"></SidebarNav>
+        <SidebarNav :nav-items="nav"/>
         <SidebarFooter/>
         <SidebarMinimizer/>
       </AppSidebar>
       <main class="main">
         <breadcrumb :list="list"/>
         <div class="container-fluid">
-          <router-view></router-view>
+          <router-view/>
         </div>
       </main>
       <AppAside fixed>
@@ -77,18 +77,18 @@ function convert2NavItem(routes, basePath = '') {
   let res = []
   routes.forEach(route => {
     if (!route.hidden) {
-      let tmp = { }
+      const tmp = { }
       if (route.meta) {
         tmp.name = route.name
         tmp.icon = route.meta.icon
-        if (isExternal(route.path)){
+        if (isExternal(route.path)) {
           tmp.url = route.path
-        } else{
+        } else {
           tmp.url = path.resolve(basePath, route.path)
         }
         if (route.children) {
-          let chr = convert2NavItem(route.children, path.resolve(basePath, route.path))
-          if (chr.length > 0){
+          const chr = convert2NavItem(route.children, path.resolve(basePath, route.path))
+          if (chr.length > 0) {
             tmp.children = chr
           }
         }
@@ -123,16 +123,16 @@ export default {
     SidebarNav,
     SidebarMinimizer
   },
-  data () {
+  data() {
     return {
       nav: convert2NavItem(store.getters.permission_routers)
     }
   },
   computed: {
-    name () {
+    name() {
       return this.$route.name
     },
-    list () {
+    list() {
       return this.$route.matched
     }
   }

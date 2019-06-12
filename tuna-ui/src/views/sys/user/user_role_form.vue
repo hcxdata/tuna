@@ -75,7 +75,7 @@ import Treeselect from '@riophae/vue-treeselect'
 
 import { required, minLength } from 'vuelidate/lib/validators'
 
-import { fetchList } from '@/api/roles'
+import { query } from '@/api/roles'
 
 import { updateSysUserRoles, fetchSysUserRoles } from '@/api/users'
 
@@ -155,7 +155,7 @@ export default {
       })
     },
     getRoles() {
-      fetchList().then(response => {
+      query().then(response => {
         if (response.data.content) {
           this.treeData = response.data.content
         }

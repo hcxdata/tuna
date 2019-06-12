@@ -34,9 +34,9 @@ const toastTypes = {
   warn: 'warn'
 }
 
-miniToastr.init({types: toastTypes})
+miniToastr.init({ types: toastTypes })
 
-function toast ({title, message, type, timeout, cb}) {
+function toast({ title, message, type, timeout, cb }) {
   return miniToastr[type](message, title, timeout, cb)
 }
 

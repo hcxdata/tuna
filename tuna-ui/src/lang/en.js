@@ -1,7 +1,7 @@
 export default {
   route: {
     dashboard: 'Dashboard',
-    tasks_dashboard: "Tasks Dashboard",
+    tasks_dashboard: 'Tasks Dashboard',
     system: 'System',
     sys_user: 'User',
     introduction: 'Introduction',

@@ -5,25 +5,27 @@
       <b-col >
         <b-card >
           <div slot="header">
-            <i class='fa fa-align-justify'/> {{ $t('system.userListTitle') }}
+            <i class="fa fa-align-justify"/> {{ $t('system.userListTitle') }}
             <div class="card-header-actions">
               <router-link :to="'/system/user/add'">
                 <b-button size="sm" block variant="primary"> 添加 </b-button>
               </router-link>
             </div>
           </div>
-          <b-table stacked="md" class="mb-0 table-outline" responsive="sm" hover :items="tableItems" :fields="tableFields" >
-            <div slot="avatar" class="avatar" slot-scope="item">
+          <b-table :items="tableItems" :fields="tableFields" stacked="md" class="mb-0 table-outline" responsive="sm" hover>
+            <div slot="avatar" slot-scope="item" class="avatar">
               <img :src="item.value.url" class="img-avatar" alt="">
-              <span class="avatar-status" v-bind:class="{ 'bg-success': item.value.status == 'success',  'bg-warning': item.value.status == 'warning', 'bg-danger': item.value.status == 'danger', 'bg-secondary': item.value.status == '' }"/>
+              <span
+                :class="{ 'bg-success': item.value.status == 'success', 'bg-warning': item.value.status == 'warning', 'bg-danger': item.value.status == 'danger', 'bg-secondary': item.value.status == '' }"
+                class="avatar-status"/>
             </div>
             <div slot="user" slot-scope="item">
-              <div>{{item.value.name}}</div>
+              <div>{{ item.value.name }}</div>
               <div class="small text-muted">
-                注册: {{item.value.registered}}
+                注册: {{ item.value.registered }}
               </div>
             </div>
-            <i slot="country" :class="flag(item.value.flag)" slot-scope="item" :title="item.value.flag" :id="item.value.flag" class="h4 mb-0"/>
+            <i slot="country" slot-scope="item" :class="flag(item.value.flag)" :title="item.value.flag" :id="item.value.flag" class="h4 mb-0"/>
             <i id="pw" class="flag-icon flag-icon-pw h1" title="pw"/>
             <div slot="nickname" slot-scope="item">
               {{ item.value }}

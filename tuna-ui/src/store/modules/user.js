@@ -53,8 +53,7 @@ const user = {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         loginByUsername(username, userInfo.password).then(response => {
-          const data = response.data
-          const auth = btoa(username+ ":" + userInfo.password)
+          const auth = btoa(username + ':' + userInfo.password)
           commit('SET_TOKEN', auth)
           setToken(auth)
           resolve()
@@ -109,7 +108,6 @@ const user = {
         resolve()
       })
     },
-
 
     ChangeRoles({ commit, dispatch }, role) {
       return new Promise(resolve => {

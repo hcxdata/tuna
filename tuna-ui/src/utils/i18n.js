@@ -26,5 +26,5 @@ export function convert2i18n(k) {
 
     return translatedTitle
   }
-  return title
+  return k
 }

@@ -302,20 +302,23 @@ export function isExternal(path) {
 }
 
 export function list2tree(list, conf) {
-  var map = {}, node, roots = [], i;
+  const map = {}
+  let node = null
+  const roots = []
   conf = Object.assign({ id: 'id', pid: 'parent_id', children: 'children', insertParetAttrsPrex: 'p_', insertParentAttrs: [] }, conf)
-  for (i = 0; i < list.length; i += 1) {
+  for (let i = 0; i < list.length; i += 1) {
     map[list[i][conf.id]] = i
     list[i][conf.children] = []
   }
-  for (i = 0; i < list.length; i += 1) {
-    node = list[i];
+  for (let i = 0; i < list.length; i += 1) {
+    node = list[i]
     if (node[conf.pid] && node[conf.pid] !== 0) {
-      if (conf.insertParentAttrs && Array.isArray(conf.insertParentAttrs) && conf.insertParentAttrs.length > 0 )
+      if (conf.insertParentAttrs && Array.isArray(conf.insertParentAttrs) && conf.insertParentAttrs.length > 0) {
         conf.insertParentAttrs.forEach(function(element) {
           node[conf.insertParetAttrsPrex + element] = list[map[node[conf.pid]]][element]
         })
-      list[map[node[conf.pid]]][conf.children].push(node);
+      }
+      list[map[node[conf.pid]]][conf.children].push(node)
     } else {
       node[conf.pid] = 0
       roots.push(node)
@@ -325,8 +328,8 @@ export function list2tree(list, conf) {
 }
 
 export function tree2Options(node, conf) {
-  conf = Object.assign({ id: 'id', label: 'label', children: 'children'}, conf)
-  let res = {}
+  conf = Object.assign({ id: 'id', label: 'label', children: 'children' }, conf)
+  const res = {}
   res.id = node[conf.id]
   res.label = node[conf.label]
   if (node.children && node.children.length > 0) {
@@ -339,12 +342,12 @@ export function tree2Options(node, conf) {
 }
 
 export function clearObjectNullOrBlank(obj) {
-  if (!(typeof obj == 'object')) {
+  if (!(typeof obj === 'object')) {
     return
   }
-  for ( var key in obj) {
-    if (obj.hasOwnProperty(key) && (obj[key] == null || obj[key] == undefined || obj[key] == '')) {
-      delete obj[key];
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key) && (obj[key] == null || obj[key] === undefined || obj[key] === '')) {
+      delete obj[key]
     }
   }
 }

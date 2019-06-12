@@ -201,7 +201,7 @@
         <div class="aside-options">
           <div class="clearfix mt-3">
             <small><b>Option 3</b></small>
-            <c-switch color="success" label variant="pill" size="sm" class="float-right" disabled defaultChecked/>
+            <c-switch color="success" label variant="pill" size="sm" class="float-right" disabled default-checked/>
           </div>
           <div>
             <small class="text-muted">Disabled option.</small>

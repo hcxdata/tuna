@@ -5,14 +5,14 @@ export function loginByUsername(username, password) {
     username,
     password
   }
-  const auth = btoa(username+ ":" + password)
+  const auth = btoa(username + ':' + password)
 
   return request({
     url: '/api/users/login',
     method: 'post',
     headers: {
-        'Authorization': 'Basic ' + auth,
-        'Content-Type': 'application/json'
+      'Authorization': 'Basic ' + auth,
+      'Content-Type': 'application/json'
     },
     data: data
   })

@@ -42,7 +42,7 @@ service.interceptors.request.use(
     // Do something before request is sent
     if (store.getters.token) {
       // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
-      config.headers['Authorization'] = "Basic " + getToken()
+      config.headers['Authorization'] = 'Basic ' + getToken()
     }
     return config
   },
@@ -91,13 +91,14 @@ service.interceptors.response.use(
   // },
   error => {
     console.log('err' + error) // for debug
-    let data = error.response.data
-    let status = error.response.status
+    const data = error.response.data
+    const status = error.response.status
     let errortext = ''
-    if(data && data.code)
+    if (data && data.code) {
       errortext = codeMessage[data.code] || codeMessage[status] || data.message
-    else
+    } else {
       errortext = codeMessage[status] || data.message
+    }
     miniToastr.error(errortext)
     // Message({
     //   message: error.message,
