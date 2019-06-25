@@ -58,6 +58,28 @@ export default new Router({
 
 export const asyncRouterMap = [
   {
+    path: '/dataCrawler',
+    component: Layout,
+    name: '数据采集',
+    redirect: 'dataCrawler/dataResult',
+    alwaysShow: true, // will always show the root menu
+    meta: {
+      icon: 'icon-settings',
+      roles: ['ROLE_ADMIN'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'dataResult',
+        component: () => import('@/views/dataCrawler/dataResult'),
+        name: "搜索采集",
+        meta: {
+          icon: 'fa fa-address-book-o',
+          roles: ['ROLE_ADMIN'] // or you can only set roles in sub nav
+        }
+      }
+    ]
+  },
+  {
     path: '/customer',
     component: Layout,
     name: '客户管理',
