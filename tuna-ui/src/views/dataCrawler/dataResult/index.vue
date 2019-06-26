@@ -36,6 +36,12 @@
                 <span class="fa fa-edit"/>
               </b-button>
             </div>
+            <div slot="link" slot-scope="item">
+              <b-link :href="item.item.link" target="blank"><i class="fa fa-link"/></b-link>
+            </div>
+            <div slot="requestedAt" slot-scope="item">
+              {{ item.item.requestedAt.indexOf('.') ? item.item.requestedAt.substr(0, item.item.requestedAt.indexOf('.')) : item.item.requestedAt }}
+            </div>
           </b-table>
           <nav>
             <b-pagination :total-rows="totalRows" :per-page="listQuery.size" v-model="listQuery.page" prev-text="Prev" next-text="Next" hide-goto-end-buttons @change="handleCurrentChange"/>
@@ -113,32 +119,33 @@ export default {
           label: 'id',
           class: 'text-center'
         },
-        link: {
-          label: '网页链接',
-          class: 'text-center'
-        },
         query: {
           label: '搜索关键词',
-          class: 'text-center'
+          class: 'text-center w-100px'
         },
-        requestedAt: {
-          label: '请求时间',
-          class: 'text-center'
-        },
-        searchEngineName: {
-          label: '搜索引擎',
+        title: {
+          label: '标题',
           class: 'text-center'
         },
         snippet: {
           label: '快照',
           class: 'text-center'
         },
-        title: {
-          label: '标题',
-          class: 'text-center'
+        searchEngineName: {
+          label: '搜索引擎',
+          class: 'text-center w-80px'
+        },
+        link: {
+          label: '网页链接',
+          class: 'text-center w-80px'
+        },
+        requestedAt: {
+          label: '请求时间',
+          class: 'text-center text-nowrap'
         },
         options: {
-          label: '操作'
+          label: '操作',
+          class: 'text-center text-nowrap'
         }
       },
       listQuery: {
@@ -238,3 +245,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.w-80px {
+  width: 80px;
+}
+.w-100px {
+  width: 100px;
+}
+</style>
