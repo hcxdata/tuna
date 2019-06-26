@@ -37,6 +37,21 @@
             </div>
           </div>
           <b-table :items="tableItems" :fields="tableFields" hover stacked="md" responsive="sm" >
+            <#list root.columns as col >
+              <#if col.config.fieldType == 'datetime' || col.config.fieldType == 'date'>
+            <template slot="${camelize(col.columnName)}" scope="item">
+                <#if (col.config.widget.format!'')?length gt 0>
+              {{ item.item.${camelize(col.columnName)} | parseTime('${ col.config.widget.format?replace("yyyy", "{y}")?replace("MM", "{m}")?replace("dd", "{d}")?replace("hh", "{h}")?replace("mm", "{i}")?replace("ss", "{s}") }') }}
+                <#else>
+                  <#if col.config.fieldType == 'datetime'>
+              {{ item.item.${camelize(col.columnName)} | parseTime('{y}-{m}-{d} {h}:{i}') }}
+                  <#else>
+              {{ item.item.${camelize(col.columnName)} | parseTime('{y}-{m}-{d}') }}
+                  </#if>
+                </#if>
+            </template>
+              </#if>
+            </#list>
             <div slot="options" slot-scope="item">
               <b-button size="sm" variant="danger" @click="handleDel(item.item.id)">
                 <span class="fa fa-trash-o"/>
@@ -101,7 +116,7 @@ const defaultForm = {
 <#assign defaultFormCol>
 <#list root.columns as col >
 <#if col.config.isEdit>
-  ${ camelize(col.columnName) }: ''<#if col_has_next>,</#if>
+  ${ camelize(col.columnName) }: '',
 </#if>
 </#list>
 </#assign>
@@ -114,7 +129,7 @@ const defaultSearchForm = {
 <#assign defaultSearchFormCol>
 <#list root.columns as col >
 <#if col.config.isQuery>
-  ${ camelize(col.columnName) }: ''<#if col_has_next>,</#if>
+  ${ camelize(col.columnName) }: '',
 </#if>
 </#list>
 </#assign>
