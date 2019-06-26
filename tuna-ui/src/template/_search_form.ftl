@@ -13,101 +13,115 @@
     <#list root.columns as col >
       <#if col.config.isQuery>
       <b-col sm="12" md="6" lg="6" xl="6">
-        <b-form-group id="${ camelize(col.columnName) }Group"
-                      label="${ col.config.fieldLabel }"
-                      label-for="${ camelize(col.columnName) }Input">
+        <b-form-group
+          id="${ camelize(col.columnName) }Group"
+          label="${ col.config.fieldLabel }"
+          label-for="${ camelize(col.columnName) }Input">
         <#if col.config.fieldType == 'number'>
-          <b-form-input id="${ camelize(col.columnName) }Input"
-                        type="number"
-                        v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                        placeholder="${ col.config.fieldLabel }"/>
+          <b-form-input
+            id="${ camelize(col.columnName) }Input"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            type="number"
+            placeholder="${ col.config.fieldLabel }"/>
         <#elseif col.config.fieldType == 'datetime'>
-          <datetime input-id="issuePlanEnded"
-                    type="datetime"
-                    format="yyyy-MM-dd HH:mm"
-                    v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                    :value-zone="'local'"
-                    class="theme-primary"
-                    aria-describedby="issuePlanEndedLiveFeedback"
-                    placeholder="${ col.config.fieldLabel }"/>
+          <datetime
+            format="yyyy-MM-dd HH:mm"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            :value-zone="'local'"
+            input-id="issuePlanEnded"
+            type="datetime"
+            class="theme-primary"
+            aria-describedby="issuePlanEndedLiveFeedback"
+            placeholder="${ col.config.fieldLabel }"/>
         <#elseif col.config.fieldType == 'datetime'>
-          <datetime input-id="issuePlanEnded"
-                    type="date"
-                    v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                    :value-zone="'local'"
-                    class="theme-primary"
-                    aria-describedby="issuePlanEndedLiveFeedback"
-                    placeholder="${ col.config.fieldLabel }"/>
+          <datetime
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            :value-zone="'local'"
+            input-id="issuePlanEnded"
+            type="date"
+            class="theme-primary"
+            aria-describedby="issuePlanEndedLiveFeedback"
+            placeholder="${ col.config.fieldLabel }"/>
         <#elseif col.config.fieldType == 'time'>
-          <datetime input-id="issuePlanEnded"
-                    type="date"
-                    v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                    :value-zone="'local'"
-                    class="theme-primary"
-                    aria-describedby="issuePlanEndedLiveFeedback"
-                    placeholder="${ col.config.fieldLabel }"/>
+          <datetime
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            :value-zone="'local'"
+            input-id="issuePlanEnded"
+            type="date"
+            class="theme-primary"
+            aria-describedby="issuePlanEndedLiveFeedback"
+            placeholder="${ col.config.fieldLabel }"/>
         <#elseif col.config.fieldType == 'textarea'>
-          <b-form-input id="${ camelize(col.columnName) }Input"
-                        type="textarea"
-                        v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                        placeholder="${ col.config.fieldLabel }"/>
+          <b-form-input
+            id="${ camelize(col.columnName) }Input"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            type="textarea"
+            placeholder="${ col.config.fieldLabel }"/>
         <#elseif col.config.fieldType == 'radio'>
           <#if col.config.data.source.category == 'd'>
-          <b-form-radio id="${ camelize(col.columnName) }Input"
-                        name="${camelize(col.columnName)}"
-                        v-for="item in ${ camelize(col.columnName) }Options"
-                        :value="item.paramCode"
-                        v-model.lazy.trim="form.${ camelize(col.columnName) }">
+          <b-form-radio
+            id="${ camelize(col.columnName) }Input"
+            v-for="item in ${ camelize(col.columnName) }Options"
+            :value="item.paramCode"
+            name="${camelize(col.columnName)}"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }">
             {{ item.paramName }}
           </b-form-radio>
           <#else>
-          <b-form-radio id="${ camelize(col.columnName) }Input"
-                        name="${camelize(col.columnName)}"
-                        v-for="item in ${ camelize(col.config.data.source.name) }Options"
-                        :value="item.${ col.config.data.source.value }"
-                        v-model.lazy.trim="form.${ camelize(col.columnName) }">
+          <b-form-radio
+            id="${ camelize(col.columnName) }Input"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            v-for="item in ${ camelize(col.config.data.source.name) }Options"
+            :value="item.${ col.config.data.source.value }"
+            name="${camelize(col.columnName)}">
             {{ item.${ col.config.data.source.label } }}
           </b-form-radio>
           </#if>
         <#elseif col.config.fieldType == 'checkbox'>
-          <b-form-checkbox-group id="${ camelize(col.columnName) }Input"
-                                 name="${camelize(col.columnName)}"
-                                 stacked
-                                 v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                                 :plain="true">
+          <b-form-checkbox-group
+            id="${ camelize(col.columnName) }Input"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            :plain="true"
+            name="${camelize(col.columnName)}"
+            stacked>
           <#if col.config.data.source.category == 'd'>
-            <b-form-checkbox v-for="item in ${ camelize(col.tableName) }Options"
-                             value="time.paramCode">
+            <b-form-checkbox
+              v-for="item in ${ camelize(col.tableName) }Options"
+              :value="time.paramCode">
               {{ item.paramName }}
             </b-form-checkbox>
           <#else>
-            <b-form-checkbox v-for="item in ${ camelize(col.config.data.source.name) }Options"
-                             value="item.${ col.config.data.source.value }">
+            <b-form-checkbox
+              v-for="item in ${ camelize(col.config.data.source.name) }Options"
+              :value="item.${ col.config.data.source.value }">
               {{ item.${ col.config.data.source.label } }}
             </b-form-checkbox>
           </#if>
           </b-form-checkbox-group>
         <#elseif col.config.fieldType == 'select'>
           <#if col.config.data.source.category == 'd'>
-          <b-form-select id="${ camelize(col.columnName) }Input"
-                        name="${camelize(col.columnName)}"
-                        v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                        :options="${ camelize(col.columnName) }Options"
-                        value-field="paramCode"
-                        text-field="paramName"/>
+          <b-form-select
+            id="${ camelize(col.columnName) }Input"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            :options="${ camelize(col.columnName) }Options"
+            name="${camelize(col.columnName)}"
+            value-field="paramCode"
+            text-field="paramName"/>
           <#else>
-          <b-form-select id="${ camelize(col.columnName) }Input"
-                         name="${camelize(col.columnName)}"
-                         v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                         :options="${ camelize(col.config.data.source.name) }Options"
-                         value-field="${ camelize(col.config.data.source.value) }"
-                         text-field="${ camelize(col.config.data.source.label) }"/>
+          <b-form-select
+            id="${ camelize(col.columnName) }Input"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            :options="${ camelize(col.config.data.source.name) }Options"
+            name="${camelize(col.columnName)}"
+            value-field="${ camelize(col.config.data.source.value) }"
+            text-field="${ camelize(col.config.data.source.label) }"/>
           </#if>
         <#else>
-          <b-form-input id="${ camelize(col.columnName) }Input"
-                        type="text"
-                        v-model.lazy.trim="form.${ camelize(col.columnName) }"
-                        placeholder="${ col.config.fieldLabel }"/>
+          <b-form-input
+            id="${ camelize(col.columnName) }Input"
+            v-model.lazy.trim="form.${ camelize(col.columnName) }"
+            placeholder="${ col.config.fieldLabel }"
+            type="text"/>
         </#if>
         </b-form-group>
       </b-col>
@@ -139,7 +153,7 @@ import { queryAll as ${tableName}QueryAll } from "@/api/${tableName}"
   </#if>
 </#list>
 export default {
-  name: "searchForm",
+  name: 'SearchForm',
   props: {
     paramForm: {
       type: Object,
@@ -168,31 +182,20 @@ export default {
     form() { return this.paramForm }
   },
   created() {
-<#assign createdStr>
 <#list root.columns as col >
   <#if col.config.isQuery>
     <#if col.config.fieldType == 'radio' || col.config.fieldType == 'checkbox' || col.config.fieldType == 'select'>
       <#if col.config.data.source.category == 'd'>
-    this.getParamInfoList(col.config.data.source.name, '${ camelize(col.columnName) }Options') {
-      ${t}QueryAll().then(response => {
-        this.${t}Options = response.data
-      }).catch(function(err) {
-        console.log(err)
-      })
-    },
+    this.getParamInfoList(${ col.config.data.source.name }, '${ camelize(col.columnName) }Options')
       </#if>
     </#if>
   </#if>
 </#list>
 <#list importTableSeq as t >
     <#if t != 'paramInfo'>
-    this.get${t?cap_first}List(),
+    this.get${t?cap_first}List()
     </#if>
 </#list>
-</#assign>
-<#if createdStr?trim?length gt 2>
-    ${ createdStr?trim[0..createdStr?trim?length-2] }
-</#if>
   },
   methods: {
 <#list importTableSeq as t >

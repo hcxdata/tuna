@@ -16,6 +16,13 @@ export function query(params, data = {}) {
   })
 }
 
+export function queryAll() {
+  return request({
+    url: '/api/${modelBean}/queryAll',
+    method: 'get'
+  })
+}
+
 export function create(data) {
   return request({
     url: '/api/${modelBean}',
