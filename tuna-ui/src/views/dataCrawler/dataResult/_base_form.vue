@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { query as paramInfoQuery } from '@/api/paramInfo'
 import { validationMixin } from 'vuelidate'
 
 import { required, minLength, maxLength, maxValue, minValue, email, sameAs, helpers } from 'vuelidate/lib/validators'
@@ -24,7 +23,6 @@ export default {
   },
   data() {
     return {
-      searchEngineNameOptions: [],
       submitted: false
     }
   },
@@ -39,21 +37,8 @@ export default {
     }
   },
   created() {
-    this.getParamInfoList(3, 'searchEngineNameOptions'
   },
   methods: {
-    getParamInfoList(id, p) {
-      const params = {}
-      const data = {}
-      data.typeId = id
-      params.page = 1000
-      params.size = 1000
-      paramInfoQuery(params, data).then(response => {
-        this[p] = response.data
-      }).catch(function(err) {
-        console.log(err)
-      })
-    },
     chkState(val) {
       const field = this.$v.form[val]
       return !field.$dirty || !field.$invalid

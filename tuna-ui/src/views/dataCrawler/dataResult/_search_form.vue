@@ -30,13 +30,11 @@
           id="searchEngineNameGroup"
           label="搜索引擎"
           label-for="searchEngineNameInput">
-          <b-form-select
+          <b-form-input
             id="searchEngineNameInput"
             v-model.lazy.trim="form.searchEngineName"
-            :options="searchEngineNameOptions"
-            name="searchEngineName"
-            value-field="paramCode"
-            text-field="paramName"/>
+            placeholder="搜索引擎"
+            type="text"/>
         </b-form-group>
       </b-col>
       <b-col sm="12" md="6" lg="6" xl="6">
@@ -56,7 +54,6 @@
 </template>
 
 <script>
-import { query as paramInfoQuery } from "@/api/paramInfo"
 export default {
   name: 'SearchForm',
   props: {
@@ -77,27 +74,8 @@ export default {
     form() { return this.paramForm }
   },
   created() {
-    this.getParamInfoList(col.config.data.source.name, 'searchEngineNameOptions') {
-      QueryAll().then(response => {
-        this.Options = response.data
-      }).catch(function(err) {
-        console.log(err)
-      })
-    }
   },
   methods: {
-    getParamInfoList(id, p) {
-      const params = {}
-      const data = {}
-      data.typeId = id
-      params.page = 1000
-      params.size = 1000
-      paramInfoQuery(params, data).then(response => {
-        this[p] = response.data
-      }).catch(function(err) {
-        console.log(err)
-      })
-    },
     validate() {
     }
   }
