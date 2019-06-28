@@ -15,13 +15,13 @@
       </b-col>
       <b-col sm="12" md="6" lg="6" xl="6">
         <b-form-group
-          id="titleGroup"
-          label="标题"
-          label-for="titleInput">
+          id="searchEngineNameGroup"
+          label="搜索引擎"
+          label-for="searchEngineNameInput">
           <b-form-input
-            id="titleInput"
-            v-model.lazy.trim="form.title"
-            placeholder="标题"
+            id="searchEngineNameInput"
+            v-model.lazy.trim="form.searchEngineName"
+            placeholder="搜索引擎"
             type="text"/>
         </b-form-group>
       </b-col>
