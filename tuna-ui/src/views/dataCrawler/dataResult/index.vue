@@ -166,6 +166,7 @@ export default {
       const data = Object.assign({}, this.searchForm)
       params.page = this.listQuery.page > 0 ? this.listQuery.page - 1 : this.listQuery.page
       params.size = this.listQuery.size
+      params.sort = "requestedAt,desc"
       clearObjectNullOrBlank(data)
       query(params, data).then(response => {
         this.tableItems = response.data.content
