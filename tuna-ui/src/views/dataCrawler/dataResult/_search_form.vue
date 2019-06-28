@@ -3,18 +3,6 @@
     <b-row>
       <b-col sm="12" md="6" lg="6" xl="6">
         <b-form-group
-          id="linkGroup"
-          label="网页链接"
-          label-for="linkInput">
-          <b-form-input
-            id="linkInput"
-            v-model.lazy.trim="form.link"
-            placeholder="网页链接"
-            type="text"/>
-        </b-form-group>
-      </b-col>
-      <b-col sm="12" md="6" lg="6" xl="6">
-        <b-form-group
           id="queryGroup"
           label="搜索关键词"
           label-for="queryInput">
@@ -22,18 +10,6 @@
             id="queryInput"
             v-model.lazy.trim="form.query"
             placeholder="搜索关键词"
-            type="text"/>
-        </b-form-group>
-      </b-col>
-      <b-col sm="12" md="6" lg="6" xl="6">
-        <b-form-group
-          id="searchEngineNameGroup"
-          label="搜索引擎"
-          label-for="searchEngineNameInput">
-          <b-form-input
-            id="searchEngineNameInput"
-            v-model.lazy.trim="form.searchEngineName"
-            placeholder="搜索引擎"
             type="text"/>
         </b-form-group>
       </b-col>
